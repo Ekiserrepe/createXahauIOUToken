@@ -3,11 +3,10 @@
 //Select your network "Testnet" or "Mainnet"
 const net = "Testnet";
 //Secret of your wallet (Don't share it!) Testnet address generator: https://xahau-test.net/ Fake example: "sn5XTrWNGNysp4o1JYEFp7wSbN6Gz"
-const seed = "shfV6DgHW4EjYK5BEAEricH8Z1Jqu";
+const seed = "shfV6DgHW4EjFJ5BEAEricH8Z1Jqu";
 // Short name of your token
 const IOU_Token = "EKI";
-//Address2: rGqsDKCW1fahqfR49unuCNVAYCFM9vf3Yh
-const seed2 = "sstko6QFupdPgi5H8VYvdhf5UjrBr";
+const seed2 = "sstko6QFupdPgi5J7VYvdhf5UjrBr";
 //End modify variables
 
 //Don't touch anything after this line
@@ -110,14 +109,14 @@ async function main() {
     ...networkInfo2.txValues,
   };
 
-  // Submit Trustline -------------------------------------------------------
+  // Submit Trustline for the second wallet -------------------------------------------------------
   const tx2 = await signAndSubmit(prepared2, network, account2);
   console.log("Info tx2 ", tx2);
   const jsonDataString2 = JSON.stringify(tx2);
   console.log(jsonDataString2);
   //finished
 
-  //Mint tokens
+  //Mint tokens from first wallet and send them to the second one
   const networkInfo3 = await utils.txNetworkAndAccountValues(network, account);
 
   const prepared3 = {
