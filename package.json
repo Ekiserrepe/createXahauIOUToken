@@ -1,0 +1,25 @@
+{
+  "name": "createxahauioutoken",
+  "version": "1.0.0",
+  "description": "Create a IOU Token in Xahau",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekiserrepe/createXahauIOUToken.git"
+  },
+  "keywords": [
+    "iou",
+    "token",
+    "xahau",
+    "mint"
+  ],
+  "author": "Ekiserrepe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ekiserrepe/createXahauIOUToken/issues"
+  },
+  "homepage": "https://github.com/Ekiserrepe/createXahauIOUToken#readme"
+}
