@@ -41,13 +41,9 @@ async function main() {
     ledger_index: "validated",
   });
   const total_balance = response.result.account_data.Balance / 1000000;
-  const reserves = response.result.account_data.OwnerCount * 0.2 + 1;
   console.log(
     `Your total balance (available+reserves) is: ${total_balance} XAH`
   );
-  console.log(`Your reserves is: ${reserves} XAH`);
-  const balance = total_balance - reserves;
-  console.log(`Your available balance is: ${balance} XAH`);
 
   const account_info = await client.request({
     command: "account_info",
@@ -74,12 +70,12 @@ async function main() {
 
   const account2 = derive.familySeed(seed2, { algorithm: "secp256k1" });
   console.log(
-    `Your public address2 from xrpl.accountlib is: ${account2.address}`
+    `Your wallet 2 public address from xrpl.accountlib is: ${account2.address}`
   );
 
   const my_wallet2 = xrpl.Wallet.fromSeed(seed2);
   const networkInfo2 = await utils.txNetworkAndAccountValues(network, account2);
-  console.log(`Your public address is: ${my_wallet2.address}`);
+  console.log(`Your wallet2 public address is: ${my_wallet2.address}`);
   const networkInf2 = await utils.txNetworkAndAccountValues(network, account2);
   const response2 = await client.request({
     command: "account_info",
@@ -87,14 +83,10 @@ async function main() {
     ledger_index: "validated",
   });
   const total_balance2 = response2.result.account_data.Balance / 1000000;
-  const reserves2 = response2.result.account_data.OwnerCount * 0.2 + 1;
   console.log(
-    `Your total balance3 (available+reserves) is: ${total_balance2} XAH`
+    `Your total balance2 (available+reserves) is: ${total_balance2} XAH`
   );
-  console.log(`Your reserves3 is: ${reserves2} XAH`);
-  const balance2 = total_balance2 - reserves2;
-  console.log(`Your available balance is: ${balance2} XAH`);
-
+ 
   let current_sequence2 = response2.result.account_data.Sequence;
   console.log("Actual Sequence 2", current_sequence2);
   //Activate rippling:
@@ -132,7 +124,7 @@ async function main() {
   };
 
   const tx3 = await signAndSubmit(prepared3, network, account);
-  console.log("Info tx3 ", tx2);
+  console.log("Info tx3 ", tx3);
   const jsonDataString3 = JSON.stringify(tx3);
   console.log(jsonDataString3);
 }
