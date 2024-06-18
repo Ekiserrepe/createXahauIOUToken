@@ -3,17 +3,17 @@
 //Select your network "Testnet" or "Mainnet"
 const net = "Testnet";
 //Secret of your wallet (Don't share it!) Testnet address generator: https://xahau-test.net/ Fake example: "sn5XTrWNGNysp4o1JYEFp7wSbN6Gz"
-const seed = "shfV6DgHW4EjFJ5BEAEricH8Z1Jqu";
+const seed = "shgWWxprfqMV1qnnrX9zhdjSbeVqD";
 // Short name of your token
-const IOU_Token = "EKI";
-const seed2 = "sstko6QFupdPgi5J7VYvdhf5UjrBr";
+const IOU_Token = "TRY";
+//Secret of your second wallet, it's going to receive your IOU tokens (Don't share it!) Testnet address generator: https://xahau-test.net/ Fake example: "sn5XTrWNGNysp4o1JYEFp7wSbN6Gz"
+const seed2 = "snigdtGgJ1hFRhyFrZ33QZn8vGAW8";
 //End modify variables
 
 //Don't touch anything after this line
 
 const xrpl = require("xrpl");
 const { derive, utils, signAndSubmit } = require("xrpl-accountlib");
-//const { XrplAccountLib } = require('xrpl');
 
 async function main() {
   function esperar(ms) {
@@ -28,13 +28,13 @@ async function main() {
   }
   const account = derive.familySeed(seed, { algorithm: "secp256k1" });
   console.log(
-    `Your public address from xrpl.accountlib is: ${account.address}`
+    `Your wallet1 public address is: ${account.address}`
   );
   const client = new xrpl.Client(network);
   await client.connect();
   const my_wallet = xrpl.Wallet.fromSeed(seed);
   const networkInfo = await utils.txNetworkAndAccountValues(network, account);
-  console.log(`Your public address from XRPL.js is: ${my_wallet.address}`);
+  console.log(`Your public address is: ${my_wallet.address}`);
   const response = await client.request({
     command: "account_info",
     account: my_wallet.address,
